@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="card mx-auto text-center" style="width: 50%;">
+        <div class="card-header">
+            <h1>Todo List</h1>
+            <div  class="input-group mb-3-xs  d-flex justify-content-center">
+                <input style="width: 50%;" type="text" [(ngModel)]="task"  placeholder="Eter the new task..." />
+                <button *ngIf="show" class="btn btn-primary" (click)="updateTask()">Update</button>
+                <button *ngIf="!show" class="btn btn-primary" (click)="addtask()">Add</button>
+            </div>
+        </div>
+        <table class="table table-striped container-fluid">
+            <thead>
+                <tr>
+                    <th>SlNo</th>
+                    <th>Task Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(task of tasksList; track task.id){
+                    <tr>
+                        <td class="card-text">{{$index+1}}</td>
+                        <td class="card-text" *ngIf="task.check">{{task.task}}</td>
+                        <td class="card-text text-muted"  *ngIf="!task.check"><s>{{task.task}}</s></td>
+                        <td class="card-text">
+                            <div class="btn btn-group">
+                                <button type="submit" class="btn btn-danger" (click)="deletTask(task.id)">Delete</button>
+                                <button type="submit" class="btn btn-success" (click)="checkTask($index)">Check</button>
+                                <button type="submit" class="btn btn-warning" (click)="editTask($index)">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
