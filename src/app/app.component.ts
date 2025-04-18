@@ -9,5 +9,5 @@ import { TodolistComponent } from './todolist/todolist.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'TodoList';
+  
 }
